@@ -9,7 +9,7 @@ class Transform:
     :param lon: Долгота
 
     """
-    _epsg_codes = {
+    _EPSG_CODES = {
         'WGS-84': 4326,
         'ГСК-2011': 7683,
         'ПЗ-90.11': 4740,

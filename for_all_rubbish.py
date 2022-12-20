@@ -73,12 +73,10 @@ def bouncing_balls(h, bounce, window):
     :param window: высота окна мамы
     :return:
     '''
-    if not (h > 0 or 0 < bounce < 1 or window < h):
+    if not (h > 0 and 0 < bounce < 1 and window < h):
         return -1
-    return int(h * bounce // window + 2) if (h * bounce) > window else 1
-
-
-print(bouncing_balls(2, 0.5, 1))
-print(bouncing_balls(3, 0.66, 1.5))
-print(bouncing_balls(30, 0.66, 1.5))
-print(bouncing_balls(30, 0.75, 1.5))
+    now_h, count = h * bounce, 1
+    while now_h > window:
+        count += 2
+        now_h *= bounce
+    return count
