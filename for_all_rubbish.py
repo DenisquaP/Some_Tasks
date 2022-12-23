@@ -1,3 +1,6 @@
+import itertools
+
+
 def is_defended(attackers, defenders):
     '''
     Given two Arrays in which values are the power of each soldier, return true if you survive the attack or false if
@@ -15,15 +18,11 @@ def is_defended(attackers, defenders):
     The initial attack power is the sum of all the values in each array.
     '''
 
-    sum_d, sum_a = sum(defenders), sum(attackers)
-    for a, d in [(a, d) for a, d in zip(attackers, defenders)]:
-        if a > d:
-            del defenders[defenders.index(d)]
-        else:
-            del attackers[attackers.index(a)]
-    if len(attackers) == len(defenders):
-        return sum_d >= sum_a
-    return len(defenders) > len(attackers)
+    win = [a < d for a, d in itertools.zip_longest(attackers, defenders, fillvalue=0)]
+    if win.count(True) > len(win) / 2:
+        return True
+    else:
+        return True if win.count(True) == len(win) / 2 and sum(attackers) < sum(defenders) else False
 
 
 def how_much_o(string):
