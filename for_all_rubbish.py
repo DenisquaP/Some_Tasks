@@ -93,16 +93,6 @@ def bouncing_balls(h, bounce, window):
     return count
 
 
-def solution(s, t):
-    '''https://www.codewars.com/kata/628df6b29070907ecb3c2d83/train/python'''
-    # for i in itertools.product('RS', repeat=t):
-    #     print(i)
-    return list(itertools.product('RS', repeat=t))
-
-
-# print(solution(2, 4))
-
-
 def bingo(ticket, win):
     '''
     https://www.codewars.com/kata/57f625992f4d53c24200070e/python
@@ -164,3 +154,10 @@ array = [[1, 2, 3],
          [8, 9, 4],
          [7, 6, 5]]
 # print(snail(array))
+
+
+def generate_hashtag(s):
+    '''https://www.codewars.com/kata/52449b062fb80683ec000024/python'''
+    if len(s) > 140 or not bool(s):
+        return False
+    return '#' + ''.join(map(lambda i: i.capitalize(), s.split()))
