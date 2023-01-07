@@ -95,7 +95,12 @@ def bouncing_balls(h, bounce, window):
 
 def solution(s, t):
     '''https://www.codewars.com/kata/628df6b29070907ecb3c2d83/train/python'''
-    return list(itertools.combinations_with_replacement(['R', 'S'], t))
+    # for i in itertools.product('RS', repeat=t):
+    #     print(i)
+    return list(itertools.product('RS', repeat=t))
+
+
+# print(solution(2, 4))
 
 
 def bingo(ticket, win):
@@ -113,3 +118,49 @@ def bingo(ticket, win):
     #         count += 1
     # return 'Winner!' if count >= win else 'Loser!'
     return 'Winner!' if sum(count) >= win else 'Loser!'
+
+
+def spok(first_player, second_player):
+    '''
+    Камень, ножницы, бумага, ящерица, спок - игра из
+    сериала "Теория большого взрыва"
+    '''
+    game_tuples = {
+        ('ножницы', 'бумага'),
+        ('бумага', 'камень'),
+        ('камень', 'ящерица'),
+        ('ящерица', 'Спок'),
+        ('Спок', 'ножницы'),
+        ('ножницы', 'ящерица'),
+        ('ящерица', 'бумага'),
+        ('Спок', 'камень'),
+        ('камень', 'ножницы')
+    }
+    if first_player == second_player:
+        return 'Draw'
+    else:
+        if (first_player, second_player) in game_tuples:
+            return 'First'
+        else:
+            return 'Second'
+
+
+def snail(snail_map):
+    '''
+    https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/python
+    Задача по выводу списка nxn по спирали
+    Можно решить с помощью нампай, но и без него нормально)
+    '''
+    expected = []
+    while len(snail_map) > 1:
+        expected.extend(snail_map[0])
+        del snail_map[0]
+        snail_map = list(zip(*snail_map))[::-1]  # Поворот на 90
+    expected.extend(snail_map[0])  # Добавление последнего элемента
+    return expected
+
+
+array = [[1, 2, 3],
+         [8, 9, 4],
+         [7, 6, 5]]
+# print(snail(array))
