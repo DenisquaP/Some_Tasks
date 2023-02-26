@@ -161,3 +161,12 @@ def generate_hashtag(s):
     if len(s) > 140 or not bool(s):
         return False
     return '#' + ''.join(map(lambda i: i.capitalize(), s.split()))
+
+
+def narcissistic(value):
+    l = len(str(value))
+    res = [int(i)**l for i in str(value)]
+    return sum(res) == value
+
+
+print(narcissistic(7))
