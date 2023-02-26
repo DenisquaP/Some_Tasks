@@ -164,8 +164,8 @@ def generate_hashtag(s):
 
 
 def narcissistic(value):
-    l = len(str(value))
-    res = [int(i)**l for i in str(value)]
+    length = len(str(value))
+    res = [int(i)**length for i in str(value)]
     return sum(res) == value
 
 
