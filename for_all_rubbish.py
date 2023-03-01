@@ -169,4 +169,20 @@ def narcissistic(value):
     return sum(res) == value
 
 
-print(narcissistic(7))
+def strip_comments(strng, markers):
+    """Complete the solution so that it strips all text that follows any of a set of comment markers passed in. Any whitespace at the end of the line should also be stripped out.  # noqa 501
+    https://www.codewars.com/kata/51c8e37cee245da6b40000bd"""
+    splited = strng.split('\n')
+    for i in range(len(splited)):
+        # Для ускорения работы. Если в строке нет маркера, её пропустят
+        if all([mark not in splited[i] for mark in markers]):
+            continue
+
+        for j in markers:
+            if j in splited[i]:
+                splited[i] = splited[i].split(j)[0].rstrip()
+                # Для ускорения работы.
+                if all([mark not in splited[i] for mark in markers]):
+                    break
+
+    return '\n'.join([i for i in splited])
