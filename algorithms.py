@@ -134,7 +134,7 @@ states_needed = {
 
 
 # Выбирает станции, которые покрывают наибольшее количество непокрытых штатов
-def some_alg(radio, needed):
+def some_hungry_alg(radio, needed):
     stations_selected = set()
     while needed:
         best_station = None
