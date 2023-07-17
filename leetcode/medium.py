@@ -13,4 +13,3 @@ class Solution:
                 nums[:] = [nums.pop()] + nums
         else:
             nums[:] = nums[-k:] + nums[:-k]
-        return nums
