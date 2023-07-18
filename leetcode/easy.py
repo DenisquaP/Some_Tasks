@@ -17,3 +17,36 @@ class Solution:
                     result[-1] += 1
                 i //= 2
         return result
+
+    def longestPalindrome(self, s: str) -> int:
+        length = len(s)
+        max = 0
+        for i in range(length):
+            for j in range(i, length):
+                substr = s[i:j]
+                if substr == substr[::-1]:
+                    now = len(substr)
+                    if now > max:
+                        max = now
+        return max
+
+    def checkPerfectNumber(self, num: int) -> bool:
+        '''
+        https://leetcode.com/problems/perfect-number/
+        A perfect number is a positive integer that
+        is equal to the sum of its positive divisors,
+        excluding the number itself. A divisor of an
+        integer x is an integer that can divide x evenly.
+        Given an integer n, return true if n is a perfect
+        number, otherwise return false.
+        '''
+        result = 1
+        for i in range(2, num // 2 + 1):
+            if num % i == 0:
+                result += i
+                print(i)
+        return num == result
+
+
+a = Solution()
+print(a.checkPerfectNumber(99999993))
