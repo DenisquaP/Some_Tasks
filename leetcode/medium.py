@@ -35,3 +35,22 @@ class Solution:
         for i in nums:
             result += abs(i - med)
         return result
+
+    def largestNumber(self, nums: List[int]) -> str:
+        li_res = []
+        for num in nums:
+            for i in str(num):
+                li_res += [int(i)]
+        li_res.sort(reverse=True)
+        result = ''
+        for i in li_res:
+            result += str(i)
+        return result
+
+    def reverseWords(self, s: str) -> str:
+        '''
+        https://leetcode.com/problems/reverse-words-in-a-string/submissions/
+        Given an input string s, reverse the order of the words.
+        A word is defined as a sequence of non-space characters.
+        '''
+        return ' '.join(s.split()[::-1])

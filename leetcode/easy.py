@@ -47,6 +47,14 @@ class Solution:
                 print(i)
         return num == result
 
+    def lengthOfLastWord(self, s: str) -> int:
+        '''
+        https://leetcode.com/problems/length-of-last-word/description/
+        Given a string s consisting of words and spaces,
+        return the length of the last word in the string.
+        '''
+        return len(s.split()[-1])
+
 
 a = Solution()
 print(a.checkPerfectNumber(99999993))
