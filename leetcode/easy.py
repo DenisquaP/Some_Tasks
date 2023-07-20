@@ -55,6 +55,53 @@ class Solution:
         '''
         return len(s.split()[-1])
 
+    def singleNumber(self, nums: List[int]) -> int:
+        '''
+        https://leetcode.com/problems/single-number/description/
+        Given a non-empty array of integers nums, every element
+        appears twice except for one. Find that single one.
+        '''
+        r = 0
+        for i in nums:
+            r = i ^ r
+        return r
 
-a = Solution()
-print(a.checkPerfectNumber(99999993))
+    def isAnagram(self, s: str, t: str) -> bool:
+        '''
+        https://leetcode.com/problems/valid-anagram/description/
+        Given two strings s and t, return true if t
+        is an anagram of s, and false otherwise.
+        '''
+        if len(t) != len(s):
+            return False
+        return sorted(s) == sorted(t)
+
+    def addBinary(self, a: str, b: str) -> str:
+        '''
+        https://leetcode.com/problems/add-binary/description/
+        Given two binary strings a and b,
+        return their sum as a binary string.
+        '''
+        # extra = 0
+        # result = ''
+        # len_a = len(a)
+        # len_b = len(b)
+        # if len_a != len_b:
+        #     longest = len(max(a, b, key=len))
+        #     if len_a < longest:
+        #         a = '0' * (longest - len_a) + a
+        #     elif len_b < longest:
+        #         b = '0' * (longest - len_b) + b
+        # for i, j in zip(a[::-1], b[::-1]):
+        #     num = int(i) + int(j) + extra
+        #     if num > 1:
+        #         result += str(num - 2)
+        #         extra = 1
+        #         continue
+        #     result += str(num)
+        #     extra = 0
+        # while extra:
+        #     result += '1'
+        #     extra -= 1
+        # return result[::-1]
+        return bin(int(a, 2) + int(b, 2))[2:]

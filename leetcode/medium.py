@@ -54,3 +54,20 @@ class Solution:
         A word is defined as a sequence of non-space characters.
         '''
         return ' '.join(s.split()[::-1])
+
+    def rotate2(self, matrix: List[List[int]]) -> None:
+        """
+        https://leetcode.com/problems/rotate-image/description/
+        Do not return anything, modify matrix in-place instead.
+        You are given an n x n 2D matrix representing an image,
+        rotate the image by 90 degrees (clockwise).
+        """
+        matrix[:] = matrix[::-1]
+        len_str = len(matrix[0])
+        result = []
+        for i in range(len_str):
+            result.append([])
+            for j in range(len_str):
+                print(result[i])
+                result[i] += [matrix[j][i]]
+        return result
