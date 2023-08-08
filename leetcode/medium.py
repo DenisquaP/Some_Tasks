@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import statistics
 
 
@@ -74,3 +74,30 @@ class Solution:
                 print(result[i])
                 result[i] += [matrix[j][i]]
         return result
+
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        https://leetcode.com/problems/swap-nodes-in-pairs/description/
+        Given a linked list, swap every two adjacent nodes and return its head.
+        '''
+        try:
+            node = head
+            next_node = head.next
+            while node and next_node:
+                node.val, next_node.val = next_node.val, node.val
+                node = node.next.next
+                next_node = next_node.next.next
+            return head
+        except AttributeError:
+            return head
+
+    def search(self, nums: List[int], target: int) -> int:
+        '''
+        https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+        Given the array nums after the possible rotation and an integer target,
+        return the index of target if it is in nums, or -1 if it is not in nums
+        '''
+        for ind, num in enumerate(nums):
+            if num == target:
+                return ind
+        return -1
