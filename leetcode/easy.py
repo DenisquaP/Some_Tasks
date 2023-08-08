@@ -105,3 +105,34 @@ class Solution:
         #     extra -= 1
         # return result[::-1]
         return bin(int(a, 2) + int(b, 2))[2:]
+
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        '''
+        https://leetcode.com/problems/greatest-common-divisor-of-strings/
+        For two strings s and t, we say "t divides s" if and
+        only if s = t + ... + t (i.e., t is concatenated with
+        itself one or more times).
+        '''
+        # longest = max(str1, str2, key=len)
+        # long = ''
+        # for i in range(len(longest)):
+        #     for j in range(len(longest)):
+        #         str1_r = str1.replace(longest[i:j], '')
+        #         str2_r = str2.replace(longest[i:j], '')
+        #         if not str1_r and not str2_r:
+        #             if len(long) < len(longest[i:j]):
+        #                 long = longest[i:j]
+        # return long
+        # if str1.replace(str2, '') == '':
+        #     return str2
+        shortest = min(str1, str2, key=len)
+        longest = max(str1, str2, key=len)
+        if not longest.replace(shortest, ''):
+            return shortest
+        for i in range(len(shortest), 0, -1):
+            if not shortest.replace(str1[i:], ''):
+                if longest.replace(str1[i:], ''):
+                    continue
+                else:
+                    return longest[i:]
+        return ''

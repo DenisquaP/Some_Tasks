@@ -7,6 +7,9 @@ class ListNode:
         self.val = val
         self.next = next
 
+    def __repr__(self) -> str:
+        return self.val
+
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
