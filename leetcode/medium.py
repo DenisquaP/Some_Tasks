@@ -90,14 +90,3 @@ class Solution:
             return head
         except AttributeError:
             return head
-
-    def search(self, nums: List[int], target: int) -> int:
-        '''
-        https://leetcode.com/problems/search-in-rotated-sorted-array/description/
-        Given the array nums after the possible rotation and an integer target,
-        return the index of target if it is in nums, or -1 if it is not in nums
-        '''
-        for ind, num in enumerate(nums):
-            if num == target:
-                return ind
-        return -1

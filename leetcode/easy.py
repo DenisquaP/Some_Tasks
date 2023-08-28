@@ -1,4 +1,5 @@
-from typing import List
+from typing import List, Optional
+from medium import ListNode
 
 
 class Solution:
@@ -136,3 +137,39 @@ class Solution:
                 else:
                     return longest[i:]
         return ''
+
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        '''
+        https://leetcode.com/problems/merge-strings-alternately/description/
+        You are given two strings word1 and word2. Merge the strings by adding
+        letters in alternating order, starting with word1. If a string is
+        longer than the other, append the additional letters onto the end of
+        the merged string.
+        '''
+        longest = len(max(word1, word2, key=len))
+        result = ''
+        for i in range(longest):
+            result += word1[i:i + 1] + word2[i:i + 1]
+        return result
+
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        https://leetcode.com/problems/middle-of-the-linked-list/description/
+        Given the head of a singly linked list, return the list node from the
+        middle.
+        '''
+        nodes = []
+        while head:
+            nodes += [head.val]
+            head = head.next
+        length = len(nodes)
+        if length % 2 != 0:
+            nodes = nodes[length // 2 + 1:]
+        else:
+            nodes = nodes[length // 2:]
+        new_head = ListNode(nodes.pop(0))
+        head = new_head
+        while nodes:
+            new_head.next = ListNode(nodes.pop(0))
+            new_head = new_head.next
+        return head
