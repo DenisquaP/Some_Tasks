@@ -20,7 +20,7 @@ def quick_sort(lis):
     if len(lis) < 2:
         return lis
 
-    # Выбираем центральный элемент
+    # Выбираем опорный элемент
     pivot = lis[0]
     less = [i for i in lis if i < pivot]
     grather = [i for i in lis if i > pivot]

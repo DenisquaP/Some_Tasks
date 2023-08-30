@@ -173,3 +173,15 @@ class Solution:
             new_head.next = ListNode(nodes.pop(0))
             new_head = new_head.next
         return head
+
+    def getMinDistance(self, nums: List[int], target: int, start: int) -> int:
+        '''
+        https://leetcode.com/problems/minimum-distance-to-the-target-element/description/
+        Given an integer array nums (0-indexed) and two integers target and start, find
+        an index i such that nums[i] == target and abs(i - start) is minimized. Notethat abs(x) is the absolute value of x.
+        or like this
+        return min([abs(i - start) for i in range(len(nums)) if nums[i] == target])
+        ''' # noqa 501
+        for i in range(len(nums)):
+            if target in nums[abs(start - i): start + i + 1]:
+                return i
