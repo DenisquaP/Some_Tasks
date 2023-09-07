@@ -90,3 +90,33 @@ class Solution:
             return head
         except AttributeError:
             return head
+
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        """
+        https://leetcode.com/problems/add-two-numbers/description/
+        You are given two non-empty linked lists representing two non-negative
+        integers. The digits are stored in reverse order, and each of their
+        nodes contains a single digit. Add the two numbers and return the sum
+        as a linked list.
+        """
+        extra = 0
+        result = ListNode()
+        temp = result
+        while l1 or l2:
+            temp.next = ListNode()
+            sum_nodes = 0
+            if l1:
+                sum_nodes += l1.val
+                l1 = l1.next
+            if l2:
+                sum_nodes += l2.val
+                l2 = l2.next
+            sum_nodes += extra
+            extra = 0
+            if sum_nodes > 9:
+                extra, sum_nodes = divmod(sum_nodes, 10)
+            temp.next.val = sum_nodes
+            temp = temp.next
+        if extra:
+            temp.next = ListNode(extra)
+        return result.next
