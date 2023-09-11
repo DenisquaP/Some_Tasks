@@ -185,3 +185,17 @@ class Solution:
         for i in range(len(nums)):
             if target in nums[abs(start - i): start + i + 1]:
                 return i
+
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        '''
+        https://leetcode.com/problems/ransom-note/description/
+        Given two strings ransomNote and magazine, return true
+        if ransomNote can be constructed by using the letters
+        from magazine and false otherwise.
+        '''
+        for i in ransomNote:
+            if i not in magazine:
+                return False
+            ransomNote = ransomNote[1:]
+            magazine = magazine[:magazine.index(i)] + magazine[magazine.index(i) + 1:]  # noqa 501
+        return True
