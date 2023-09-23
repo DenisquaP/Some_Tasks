@@ -91,7 +91,7 @@ class Solution:
         except AttributeError:
             return head
 
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:  # noqa 501
         """
         https://leetcode.com/problems/add-two-numbers/description/
         You are given two non-empty linked lists representing two non-negative

@@ -199,3 +199,25 @@ class Solution:
             ransomNote = ransomNote[1:]
             magazine = magazine[:magazine.index(i)] + magazine[magazine.index(i) + 1:]  # noqa 501
         return True
+
+    def isSubsequence(self, s: str, t: str) -> bool:
+        '''
+        https://leetcode.com/problems/is-subsequence/description/
+        Given two strings s and t, return true if s is a
+        subsequence of t, or false otherwise.
+        '''
+        for i in range(len(s)):
+            if s[i] not in t:
+                return False
+            t = t[t.index(s[i]) + 1:]
+        return True
+
+    def maxProfit(self, prices: List[int]) -> int:
+        if sorted(prices, reverse=True) == prices:
+            return 0
+        glob_max = 0
+        for i in range(len(prices) - 1):
+            loc_max = max([j - prices[i] for j in prices[i+1:][::-1]])
+            if loc_max > glob_max:
+                glob_max = loc_max
+        return glob_max
