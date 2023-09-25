@@ -1,4 +1,8 @@
+# import sys
+# sys.path.append('/home/denis/git/Some_Tasks/my_decorators')
+
 from typing import List, Optional
+from my_decorators.time import func_time
 import statistics
 
 
@@ -142,11 +146,23 @@ class Solution:
         max = 0
         for i in range(len(height)):
             for j in range(i + 1, len(height)):
-                now = (j - i) * height[j]
+                now = (j - i) * min(height[j], height[i])
                 if now > max:
-                    print(j-i, height[j])
+                    print(i, j-i, height[j])
                     max = now
         return max
 
-a = Solution()
-print(a.maxArea([1,8,6,2,5,4,8,3,7]))
+    def maxArea2(self, height: List[int]) -> int:
+        '''
+        https://leetcode.com/problems/container-with-most-water/
+        '''
+        glob_max = 0
+        start = 0
+        end = len(height) - 1
+        while start < end:
+            now = (end - start) * min(height[end], height[start])
+            if now > glob_max:
+                glob_max = now
+            start += 1
+            end -= 1
+        return glob_max
