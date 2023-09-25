@@ -120,3 +120,33 @@ class Solution:
         if extra:
             temp.next = ListNode(extra)
         return result.next
+
+    def myAtoi(self, s: str) -> int:
+        'converts string to int'
+        s = s.strip()
+        result = ''
+        minus = False
+        for i in range(len(s)):
+            if s[i] == '-':
+                minus = True
+            if s[i].isdigit():
+                for j in s[i:]:
+                    if j.isdigit():
+                        result += j
+                else:
+                    return int(result) if not minus else int('-' + result)
+            elif s[i].isalpha():
+                return None
+
+    def maxArea(self, height: List[int]) -> int:
+        max = 0
+        for i in range(len(height)):
+            for j in range(i + 1, len(height)):
+                now = (j - i) * height[j]
+                if now > max:
+                    print(j-i, height[j])
+                    max = now
+        return max
+
+a = Solution()
+print(a.maxArea([1,8,6,2,5,4,8,3,7]))
