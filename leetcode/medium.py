@@ -1,8 +1,5 @@
-# import sys
-# sys.path.append('/home/denis/git/Some_Tasks/my_decorators')
-
 from typing import List, Optional
-from my_decorators.time import func_time
+# from my_decorators.time import func_time
 import statistics
 
 
