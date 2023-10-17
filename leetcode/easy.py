@@ -221,3 +221,27 @@ class Solution:
             if loc_max > glob_max:
                 glob_max = loc_max
         return glob_max
+
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:  # noqa 501
+        '''
+        https://leetcode.com/problems/merge-two-sorted-lists/description/
+        You are given the heads of two sorted linked lists list1 and list2.
+        Merge the two lists into one sorted list. The list should be made by
+        splicing together the nodes of the first two lists.
+        '''
+        loc = ListNode()
+        result = loc
+        var = []
+        while list1 or list2:
+            if list1:
+                var += [list1.val]
+                list1 = list1.next
+            if list2:
+                var += [list2.val]
+                list2 = list2.next
+        for i in sorted(var):
+            print(i)
+            loc.next = ListNode(i)
+            loc = loc.next
+
+        return result
