@@ -1,3 +1,4 @@
+import itertools
 from typing import List, Optional
 # from my_decorators.time import func_time
 import statistics
@@ -163,3 +164,35 @@ class Solution:
             start += 1
             end -= 1
         return glob_max
+
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        """_summary_
+        https://leetcode.com/problems/3sum-closest/description/
+
+        Args:
+            nums (List[int]): integer array nums of length n
+            target (int): target num
+
+        Returns:
+            int: the sum of the three integers closest to target
+        """
+        closest = (0, float('inf'))  # val, distance
+        nums.sort()
+
+        for i in range(len(nums) - 2):
+            l = i + 1
+            r = len(nums) - 1
+
+            while l < r:
+                now = nums[i] + nums[l] + nums[r]
+                if now == target:
+                    return target
+                elif now < target:
+                    l += 1
+                else:
+                    r -= 1
+                if abs(target - now) < closest[1]:
+                    closest = (now, abs(target - now))
+                    print(closest)
+
+        return closest[0]
