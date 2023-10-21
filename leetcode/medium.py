@@ -1,4 +1,4 @@
-import itertools
+# import itertools
 from typing import List, Optional
 # from my_decorators.time import func_time
 import statistics
@@ -180,7 +180,7 @@ class Solution:
         nums.sort()
 
         for i in range(len(nums) - 2):
-            l = i + 1
+            l = i + 1  # noqa 741
             r = len(nums) - 1
 
             while l < r:
@@ -196,3 +196,37 @@ class Solution:
                     print(closest)
 
         return closest[0]
+
+    def letterCombinations(self, digits: str) -> List[str]:
+        letters = {
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz'
+
+        }
+        if digits == '':
+            return []
+        elif len(digits) == 1:
+            return [i for i in letters[digits]]
+        given = [letters[digits[0]]]
+        result = []
+        for i in digits[1:]:
+            given.append(letters[i])
+        print(given)
+        # починить чтоб работало с несколькими цифрами
+        # в данный момент берется только 2 буквы из цифр
+        while given[0]:
+            fir = given[0][0]
+            given[0] = given[0][1:]
+            for i in given[1]:
+                result += [fir + i]
+        return result
+
+
+a = Solution()
+print(a.letterCombinations('23'))
